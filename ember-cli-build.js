@@ -1,10 +1,10 @@
 'use strict';
 
 const GlimmerApp = require('@glimmer/application-pipeline').GlimmerApp;
+const replace = require('rollup-plugin-replace');
 
 module.exports = function(defaults) {
   let app = new GlimmerApp(defaults, {
-    // Add options here
   });
 
   // Use `app.import` to add additional libraries to the generated
