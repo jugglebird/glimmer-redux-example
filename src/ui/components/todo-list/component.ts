@@ -1,6 +1,6 @@
 import Component, { tracked } from "@glimmer/component";
-import reduxStore from '../../../utils/store';
-import { State } from '../../../utils/reducer';
+// import reduxStore from '../../../utils/store';
+// import { State } from '../../../utils/reducer';
 
 export default class TodoList extends Component {
   store: any;
@@ -12,25 +12,15 @@ export default class TodoList extends Component {
 
   constructor(options: Object) {
     super(options);
-
-    debugger;
-    this.store = reduxStore();
     this.state = this.store.getState();
-    this.store.subscribe(() => {
-      this.state = this.store.getState();
-      this.items = this.state.items;
-      this.newItemText = this.state.newItemText;
-    });
-    this.items = this.state.items;
-    this.newItemText = this.state.newItemText;
   }
-
-  // store: inject('store')
-  // dispatch:
 
   // State Selectors
   @tracked items = this.state.items;
-  @tracked newItemText = this.state.newItemText;
+  @tracked('state.newItemText')
+  get newItemText() {
+    return this.state.newItemText;
+  }
 
   // Action Creators
   dispatchUpdateNewItemText(text) {
@@ -38,6 +28,7 @@ export default class TodoList extends Component {
       type: 'UPDATE_NEW_ITEM_TEXT',
       payload: text
     });
+    this.state = this.store.getState();
   }
 
   dispatchAddItem(item) {
@@ -61,6 +52,7 @@ export default class TodoList extends Component {
   }
 
   addItem() {
+    debugger
     if (!this.newItemText) {return false}
     this.dispatchAddItem({
       text: this.newItemText,

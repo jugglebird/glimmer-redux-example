@@ -4,7 +4,10 @@ import { ComponentManager, setPropertyDidChange } from '@glimmer/component';
 const app = new App();
 const containerElement = document.getElementById('app');
 const store = {
-  worked: 'yes'
+  worked: 'yes',
+  create() {
+    console.log('test')
+  }
 }
 
 setPropertyDidChange(() => {
@@ -19,10 +22,11 @@ app.registerInitializer({
       ComponentManager,
     )
     registry.register(
-      'store:main',
-      store
+      'store:/todo-list/data/store',
+      store,
+      { singleton: true }
     )
-    registry.registerInjection('component', 'store', 'store:main')
+    registry.registerInjection('component', 'store', 'store:/todo-list/data/store')
   }
 });
 

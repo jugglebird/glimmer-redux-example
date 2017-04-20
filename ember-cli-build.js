@@ -5,6 +5,11 @@ const replace = require('rollup-plugin-replace');
 
 module.exports = function(defaults) {
   let app = new GlimmerApp(defaults, {
+    rollup: {
+      plugins: [replace({
+        'process.env.NODE_ENV': JSON.stringify(process.env)
+      })]
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
