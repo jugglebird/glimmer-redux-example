@@ -31,5 +31,9 @@
   "engines": {
     "node": ">= 4.0"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "glimmer-redux": "^0.0.7",
+    "rollup-plugin-glimmer-redux": "^0.0.3"
+  }
 }

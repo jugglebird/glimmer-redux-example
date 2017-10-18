@@ -1,5 +1,11 @@
-import Component from '@glimmer/component';
+import { connect } from 'glimmer-redux';
 
-export default class GlimmerReduxExample extends Component {
+const stateToComputed = state => ({
+  up: state.number.up
+});
 
-}
+const dispatchToActions = dispatch => ({
+  update: () => dispatch({type: 'ADD'})
+});
+
+export default connect(stateToComputed, dispatchToActions)();
