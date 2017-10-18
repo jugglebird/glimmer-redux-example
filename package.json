@@ -33,7 +33,7 @@
   },
   "private": true,
   "dependencies": {
-    "glimmer-redux": "^0.0.7",
+    "glimmer-redux": "^0.0.8",
     "rollup-plugin-glimmer-redux": "^0.0.3"
   }
 }
