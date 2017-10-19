@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import todos from './todos';
 
 const number = (state, action) => {
   if(action.type === 'ADD') {
@@ -9,5 +10,6 @@ const number = (state, action) => {
 };
 
 export default combineReducers({
-  number
+  number,
+  todos
 });

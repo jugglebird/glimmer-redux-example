@@ -1,0 +1,7 @@
+<ul class="todo-list">
+  {{#each todos key="@index" as |todo|}}
+    <li class="todo-item">{{todo.text}}</li>
+  {{/each}}
+</ul>
+
+<button class="add-todo" onclick={{action add}}>add todo</button>
